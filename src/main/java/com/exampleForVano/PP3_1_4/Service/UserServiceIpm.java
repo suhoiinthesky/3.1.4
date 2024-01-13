@@ -1,8 +1,7 @@
-package com.exampleForVano.VanoVpered.Service;
+package com.exampleForVano.PP3_1_4.Service;
 
-import com.exampleForVano.VanoVpered.model.User;
-import com.exampleForVano.VanoVpered.repository.UserRepository;
-import com.exampleForVano.VanoVpered.security.UserDetailsImp;
+import com.exampleForVano.PP3_1_4.model.User;
+import com.exampleForVano.PP3_1_4.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -44,12 +43,7 @@ public class UserServiceIpm implements UserService, UserDetailsService {
     }
 
 
-    /**
-     * Тут стоило проверить на существование юзера
-     * Но опять таки, это все тестовые приложения, которые абсолютно
-     * не предназаначаются для продакшена.
-     * Просто хотел дать понять что да - это делать по идее надо.
-     */
+
     @Override
     @Transactional
     public User findById(Long id) {
@@ -63,10 +57,15 @@ public class UserServiceIpm implements UserService, UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username);
+        User user = userRepository.findByName(username);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User '%s' not found", username));
         }
-        return new UserDetailsImp(user);
+        return user.fromUser();
+    }
+
+    @Override
+    public User findByName(String name) {
+        return userRepository.findByName(name);
     }
 }

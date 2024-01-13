@@ -1,12 +1,12 @@
-package com.exampleForVano.VanoVpered.repository;
+package com.exampleForVano.PP3_1_4.repository;
 
 
-import com.exampleForVano.VanoVpered.model.User;
+import com.exampleForVano.PP3_1_4.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByUserName(String userName);
+    User findByName(String name);
 }

@@ -1,4 +1,4 @@
-package com.exampleForVano.VanoVpered.configs;
+package com.exampleForVano.PP3_1_4.configs;
 
 
 import org.springframework.context.annotation.Bean;

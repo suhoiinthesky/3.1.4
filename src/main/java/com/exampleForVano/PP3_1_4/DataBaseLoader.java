@@ -1,9 +1,9 @@
-package com.exampleForVano.VanoVpered;
+package com.exampleForVano.PP3_1_4;
 
-import com.exampleForVano.VanoVpered.Service.RoleServiceImp;
-import com.exampleForVano.VanoVpered.Service.UserService;
-import com.exampleForVano.VanoVpered.model.Role;
-import com.exampleForVano.VanoVpered.model.User;
+import com.exampleForVano.PP3_1_4.Service.RoleServiceImp;
+import com.exampleForVano.PP3_1_4.Service.UserService;
+import com.exampleForVano.PP3_1_4.model.Role;
+import com.exampleForVano.PP3_1_4.model.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -29,11 +29,11 @@ public class DataBaseLoader implements CommandLineRunner {
         Role ROLE_ADMIN = new Role("ROLE_ADMIN");
         roleService.save(ROLE_ADMIN);
 
-        User user = new User("userAbuser", "fafi@gmail.ru", "1234");
+        User user = new User("user", "Abuser", 13, "fafi@gmail.ru", "1234");
         user.setRoles(new HashSet<>(List.of(ROLE_USER)));
         userService.save(user);
 
-        User admin = new User("Admin", "joja@gmail.ru", "123456");
+        User admin = new User("Admin","Controller", 33, "joja@gmail.ru", "123456");
         admin.setRoles(new HashSet<>(List.of(ROLE_ADMIN, ROLE_USER)));
         userService.save(admin);
 
